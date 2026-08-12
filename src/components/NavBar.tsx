@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { RiMenu2Fill, RiCloseFill } from "react-icons/ri";
 
 const drawerVariants = {
-  hidden: { x: "-100%", opacity: 0 },
+  hidden: { x: "100%", opacity: 0 },
   visible: {
     x: "0%",
     opacity: 1,
@@ -100,8 +100,23 @@ const NavBar = () => {
             animate="visible"
             exit="hidden"
           >
+            <div
+              className="h-full w-[20vw] bg-black opacity-30"
+              onClick={toggleNav}
+            />
+
             <div className="bg-blue-primary flex h-full w-[80vw] flex-col gap-6 p-8">
-              <div className="flex justify-end">
+              <div className="flex items-center justify-between">
+                <ScrollLink
+                  to="home"
+                  smooth={true}
+                  duration={500}
+                  offset={-100}
+                  onClick={toggleNav}
+                  className="font-chakra text-lavender-primary cursor-pointer font-bold tracking-wider transition-colors hover:text-white"
+                >
+                  Wesley Wu
+                </ScrollLink>
                 <RiCloseFill
                   className="cursor-pointer text-2xl text-white"
                   onClick={toggleNav}
@@ -131,11 +146,6 @@ const NavBar = () => {
                 </motion.div>
               ))}
             </div>
-
-            <div
-              className="h-full w-[20vw] bg-black opacity-30"
-              onClick={toggleNav}
-            />
           </motion.div>
         )}
       </AnimatePresence>
